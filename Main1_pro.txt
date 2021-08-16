@@ -1,0 +1,72 @@
+				                      APPENDIX-A		
+
+Main and All Functions Declaration :
+
+
+void main(void)
+{
+    int i,j,k;
+    for(i=0; i<120; i++)
+    {
+        printf("\xdb");
+    }
+    printf("\n");
+    for(i=0; i<120; i++)
+    {
+        printf("\xdb");//it will print a rectangle, \x means hexadecimal number
+    }
+    system("color 6a");
+    printf(" \t____________________________________________________________________________________________________________\n");
+    printf("\t|                                                                                                           |\n");
+    printf("\t|                             **WELCOME TO SCHOOL BILLING SYSTEM PROJECT**                                  |\n");
+    printf("\t|                                                                                                           |\n");
+    printf("\t|                                      MADE BY SADIA SUBRUN PROMA                                           |\n");
+    printf("\t|                              *****************************************                                    |\n");
+    printf("\t|                              *****************************************                                    |\n");
+    printf("\t|___________________________________________________________________________________________________________|\n");
+    printf("\n\tPLEASE ENTER ANY KEY TO CONTINUE");
+    for(i=0; i<5; i++)
+    {
+        printf(".");
+    }
+    getch();
+    system("CLS");//clears the screen
+    printf("\n");
+    for(i=0; i<120; i++)
+    {
+        printf("\xdb");
+    }
+    system("color 6A");
+    printf("\n\n\t                      ** WELCOME TO C PROGRAM SCHOOL BILLING SYSTEM PROJECT **\n\n\n");
+    for(i=0; i<120; i++)
+    {
+        printf("\xdb");
+    }
+    printf("\nPLEASE ENTER ANY KEY TO START\n");
+    for(i=0; i<5; i++)
+    {
+        printf(".");
+    }
+    fflush(stdin);
+    getch();
+    system("CLS");//screen clear
+    system("color 6A");//1st is for back ground color and second is for text color
+    printf("\n\t\tPLEASE ENTER CURRENT DATE\nmm dd yy\n ");
+    scanf("%d%d%d",&mm,&dd,&yy);
+    mm=chkdat(mm,dd);
+    start();
+}
+  void start();
+  void addrec(int);
+  void searchrec(int);
+  void modrec(int);
+  void delrec(int);
+  void salary(int);
+  void fee(int);
+  void ext();
+  int chkdat(int,int);
+  int clscanf();
+
+
+
+

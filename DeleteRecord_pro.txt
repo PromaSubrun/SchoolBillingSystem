@@ -1,0 +1,107 @@
+							APPENDIX: F
+
+
+Delete Record:
+
+void delrec(int j)
+{
+    system("CLS");
+    printf("\n\t******************************************************************");
+
+    printf("\n\t                     ***************************                  ");
+
+    printf("\n\t*********************          DELETE RECORD     *******************");
+
+    printf("\n\t                     ***************************                  ");
+
+    printf("\n\t******************************************************************");
+    FILE *temp,*t1;
+    int a=1;
+    char name[50],c='y';
+    if (j==1)
+    {
+        while(c=='y'||c=='Y')
+        {
+            int a=1;
+            printf("\n\nenter name of student to delete: ");
+            fflush(stdin);
+            scanf("%[^\n]",name);
+            fs=fopen("student","RB");
+            temp=fopen("temp file","WB");//opening of temporary file for deleting process
+            while (fread(&stud,sizeof(stud),1,fs)==1)
+            {
+                if (strcmp(stud.n,name)==0)
+                {
+                    a=0;
+                    continue;
+                }
+                else
+                {
+                    fwrite(&stud,sizeof(stud),1,temp);
+                }
+            }
+
+            if (a==1)
+                printf("\n\nRECORD NOT FOUND");
+            else
+                printf("\n\nRECORD SUCCESSFULLY  DELETED");
+            printf("\n\n");
+            system("pause");
+            fflush(stdin);
+
+            fclose(fs);
+            fclose(temp);
+            system("DEL student");/*all data except the data to be
+            deleted in student were 1st moved to temp and data in student
+            was deleted*/
+            system("REN temp file, student");//renaming temp to student
+            printf("\n\nDo you want to continue with the process(press y or Y");
+            fflush(stdin);
+            c=getch();
+        }
+        getch();
+    }
+
+    if (j==2)
+    {
+        a=1;
+        char namet[50];
+        while(c=='y'||c=='Y')
+        {
+            printf("\n\nEnter name of teacher to delete record: ");
+            fflush(stdin);
+            scanf("%[^\n]",namet);
+            ft=fopen("teacher","RB");
+            t1=fopen("temp file1","WB");
+            while (fread(&tech,sizeof(tech),1,ft)==1)
+            {
+                if (strcmp(tech.n,namet)==0)
+                {
+                    a=0;
+                    continue;
+                }
+                else
+                {
+                    fwrite(&tech,sizeof(tech),1,t1);
+                }
+            }
+
+            if (a==1)
+                printf("\n\nRECORD NOT FOUND");
+            else
+                printf("\n\nRECORD SUCCESSFULLY  DELETED");
+            printf("\n\n");
+            system("pause");
+            fflush(stdin);
+
+            fclose(ft);
+            fclose(t1);
+            system("DEL teacher");
+            system("REN temp file1, teacher");
+            printf("\n\nDo you want to continue with the process(press y or Y");
+            fflush(stdin);
+            c=getch();
+        }
+        getch();
+    }
+}

@@ -1,0 +1,70 @@
+							APPENDIX: G
+
+
+Calculate Salary:
+
+void salary(int mm)
+{
+    system("CLS");
+    printf("\n\t******************************************************************");
+
+    printf("\n\t                     ***************************                  ");
+
+    printf("\n\t*********************          SALARY     *******************");
+
+    printf("\n\t                     ***************************                  ");
+
+    printf("\n\t******************************************************************");
+    FILE *f,*t;
+    int a=1,day;
+    char name[50],c='y';
+    int month,dif,id;
+    while(c=='y'||c=='Y')
+    {
+        int a=1;
+        fflush(stdin);
+        printf("\n\nEnter name:: ");
+        scanf("%[^\n]",name);
+        printf("\n\nEnter ID:: ");
+        scanf("%d",&id);
+        f=fopen("teacher","RB+");
+        t=fopen("TE","WB+");
+        while(fread(&tech,sizeof(tech),1,f)==1)//file opened
+        {
+            if(strcmp(tech.n,name)==0 )//name entered is compared to the existing name in file
+            {
+                float lsal;
+                a=0;
+                printf("\n\nEnter the month till which salary is to be paid:: ");
+                fflush(stdin);
+                scanf("%d",&month);
+                month=chkdat(month,day);
+                tech.adv=(month-mm-1)*tech.sal;
+                if (tech.adv<0) tech.adv=0;
+                lsal=mm-tech.dt.m;//months of salary left to be paid
+                if(lsal<0) lsal=0;
+                tech.tot=tech.adv+tech.sal*(1+lsal);
+                if(month==tech.dt.m) tech.tot=0;
+                printf("\nmonthly salary left to be paid:: %.2f",lsal);
+                printf("\ntotal :: %.2f",tech.tot);
+                printf("\nadvance :: %.2f",tech.adv);
+                tech.dt.m=month;
+                fwrite(&tech,sizeof(tech),1,t);
+                fclose(f);
+                fclose(t);
+
+                if (a==1)
+                    printf("\n\nRECORD NOT FOUND");
+                printf("\n\n");
+                system("pause");
+                fflush(stdin);
+                system("DEL teacher");
+                system("REN TE, teacher");
+            }
+        }
+        printf("\n\nDo you want to continue with the process(press y or Y");
+        fflush(stdin);
+        c=getch();
+    }
+    getch();
+}

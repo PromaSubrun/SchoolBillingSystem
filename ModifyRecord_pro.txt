@@ -1,0 +1,200 @@
+						     APPENDIX: E
+
+
+Modify Record:
+
+void modrec(int j)
+{
+
+    char name[50];
+    int a=1,choice,cl,rolno;
+    char c='y';
+    if (j==1)
+    {
+        while(c=='y'||c=='Y')
+        {
+            system("CLS");
+            printf("\n\t******************************************************************");
+
+            printf("\n\t                    ***************************                  ");
+
+            printf("\n\t*********************   MODIFY RECORD     *******************");
+
+            printf("\n\t                     ***************************                  ");
+
+            printf("\n\t******************************************************************");
+            printf("\n\n\t\tPLEASE CHOOSE MODIFY TYPE::");
+            printf("\n\n\t\t1::Modify by name::");
+            printf("\n\n\t\t2::Modify by name &class::");
+            printf("\n\n\t\t3::Modify by name,class & roll no::");
+            printf("\n\n\t\t4::Exit");
+            printf("\n\n\t\t::Enter your choice:: ");
+            fflush(stdin);
+            scanf("%d",&choice);
+            if (choice==1)
+            {
+                int a=0;
+                printf("\n\nenter name of student to modify: ");
+                fflush(stdin);
+                scanf("%[^\n]",name);
+                fs=fopen("student","RB+");
+                while(fread(&stud,sizeof(stud),1,fs)==1)
+                {
+                    a=1;
+                    if (strcmpi(name,stud.n)==0)
+                    {
+                        a=0;
+                        printf("\nenter new name of student: ");
+                        fflush(stdin);
+                        scanf("%[^\n]",stud.n);
+                        printf("\nenter new class of student: ");
+                        fflush(stdin);
+                        stud.c=clscanf();
+                        printf("\nenter new roll of student: ");
+                        fflush(stdin);
+                        scanf("%d",&stud.r);
+                        fseek(fs,-sizeof(stud),SEEK_CUR);
+                        fwrite(&stud,sizeof(stud),1,fs);
+                        fclose(fs);
+                    }
+                }
+                if (a==1)
+                    printf("\n\nRECORDS NOT FOUND");
+                else
+                    printf("\n\nRECORDS SUCCESSFULLY  MODIFIED");
+                printf("\n\n");
+                system("pause");
+            }
+            else if (choice==2)
+            {
+                int a=0;
+                printf("\n\nenter name of student to modify: ");
+                fflush(stdin);
+                scanf("%[^\n]",name);
+                printf("\n\nenter class of student to modify: ");
+                fflush(stdin);
+                cl=clscanf();
+                fs=fopen("student","RB+");
+                while(fread(&stud,sizeof(stud),1,fs)==1)
+                {
+                    a=1;
+                    if (strcmpi(name,stud.n)==0 && cl==stud.c)
+                    {
+                        a=0;
+                        printf("\nenter new name of student: ");
+                        fflush(stdin);
+                        scanf("%[^\n]",stud.n);
+                        printf("\nenter new class of student: ");
+                        fflush(stdin);
+                        stud.c=clscanf();
+                        printf("\nenter new roll of student: ");
+                        fflush(stdin);
+                        scanf("%d",&stud.r);
+                        fseek(fs,-sizeof(stud),SEEK_CUR);
+                        fwrite(&stud,sizeof(stud),1,fs);
+                        fclose(fs);
+                    }
+                }
+                if (a==1)
+                    printf("\n\nRECORDS NOT FOUND");
+                else
+                    printf("\n\nRECORDS SUCCESSFULLY  MODIFIED");
+                printf("\n\n");
+                system("pause");
+            }
+            else if (choice==3)
+            {
+                int a=0;
+                printf("\n\nenter name of student to modify: ");
+                fflush(stdin);
+                scanf("%[^\n]",name);
+                printf("\n\nenter class of student to modify: ");
+                fflush(stdin);
+                cl=clscanf();
+                printf("\n\nenter roll of student to modify: ");
+                fflush(stdin);
+                scanf("%d",&rolno);
+                fs=fopen("student","rb+");
+                while(fread(&stud,sizeof(stud),1,fs)==1)
+                {
+                    a=1;
+                    if (strcmpi(name,stud.n)==0 && cl==stud.c &&rolno==stud.r)
+                    {
+                        a=0;
+                        printf("\nenter new name of student: ");
+                        fflush(stdin);
+                        scanf("%[^\n]",stud.n);
+                        printf("\nenter new class of student: ");
+                        fflush(stdin);
+                        stud.c=clscanf();
+                        printf("\nenter new roll of student: ");
+                        fflush(stdin);
+                        scanf("%d",&stud.r);
+                        fseek(fs,-sizeof(stud),SEEK_CUR);
+                        fwrite(&stud,sizeof(stud),1,fs);
+                        fclose(fs);
+                    }
+                }
+                if (a==1)
+                    printf("\n\nRECORDS NOT FOUND");
+                else
+                    printf("\n\nRECORDS SUCCESSFULLY  MODIFIED");
+                printf("\n\n");
+                system("pause");
+            }
+            else if (choice==4) ext();
+            else
+            {
+                printf("\n\n\n\t\tINVALID ENTRY!!!!\n\n\t\t");
+                system("pause");
+                modrec(1);
+            }
+
+            printf("\n\nDo you want to continue with the process(press y or Y");
+            fflush(stdin);
+            c=getch();
+        }
+        getch();
+    }
+
+    if (j==2)
+    {
+        while(c=='y'||c=='Y')
+        {
+            int a=1;
+            printf("enter name of teacher to modify: ");
+            fflush(stdin);
+            scanf("%[^\n]",name);
+            ft=fopen("teacher","RB+");
+            while(fread(&tech,sizeof(tech),1,ft)==1)
+            {
+                if (strcmpi(name,tech.n)==0)
+                {
+                    a=0;
+                    printf("\nenter new name of teacher: ");
+                    fflush(stdin);
+                    scanf("%[^\n]",tech.n);
+                    printf("\nenter new id of teacher: ");
+                    fflush(stdin);
+                    scanf("%d",&tech.id);
+                    fseek(ft,-sizeof(tech),SEEK_CUR);
+                    fwrite(&tech,sizeof(tech),1,ft);
+                    fclose(ft);
+                }
+            }
+
+            if (a==1)
+                printf("\n\nRECORD NOT FOUND");
+            else
+                printf("\n\nRECORD SUCCESSFULLY  MODIFIED");
+            printf("\n\n");
+            system("pause");
+            fflush(stdin);
+
+            printf("\n\nDo you want to continue with the process(press y or Y");
+            fflush(stdin);
+            c=getch();
+        }
+        getch();
+    }
+}

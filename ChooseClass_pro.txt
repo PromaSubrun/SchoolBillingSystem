@@ -1,0 +1,17 @@
+Choose Class:
+
+int clscanf()
+{
+    int mnt,mon;
+    fflush(stdin);
+    scanf("%d",&mnt);
+    if (mnt>12 ||mnt<1)
+    {
+
+        MessageBox(0,"Invalid Class!\nEnter Class","Error!!",0);
+        fflush(stdin);
+        mon=clscanf();
+    }
+    else
+        return mnt;
+}

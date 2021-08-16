@@ -1,0 +1,112 @@
+						APPENDIX: B
+					
+
+Start:
+
+void start()
+{
+    int i,j;//j is for selection of account type
+    system("CLS");
+    printf("\n\t\tPLEASE ENTER ACCOUNT TYPE");
+    printf("\n\t\t1:: Student");
+    printf("\n\t\t2:: Teachers and Staffs");
+    printf("\n\t\t3:: Exit");
+    printf("\n\t\tAccount type choice  ");
+    fflush(stdin);
+    scanf("%d",&j);
+    switch (j)
+    {
+    case 3:
+        ext();
+    case 1:
+    {
+        system("CLS");
+        printf("\n\t\tPLEASE ENTER THE CHOICE");
+        printf("\n\t\t1:: Add record");
+        printf("\n\t\t2:: Search record");
+        printf("\n\t\t3:: Modify record");
+        printf("\n\t\t4:: Delete record");
+        printf("\n\t\t5:: Calculate fee");
+        printf("\n\t\t6:: Exit");
+        printf("\n\n Enter choice  ");
+        fflush(stdin);
+        scanf("%d",&i);
+        switch (i)
+        {
+        case 1:
+            addrec(j);//function call
+            start();//function call
+        case 2:
+            searchrec(j);
+            start();
+        case 3:
+            modrec(j);
+            start();
+        case 4:
+            delrec(j);
+            start();
+        case 5:
+            fee(mm);
+            start();
+        case 6:
+            ext();
+        default :
+        {
+            printf("\n\n\tInvalid entry!!");
+            printf("\n\nTo Account Type\n\n\t");
+            system("pause");
+            start();
+        }
+        }
+    }
+    case 2:
+    {
+
+        system("CLS");
+        printf("\n\t\tPLEASE ENTER THE CHOICE");
+        printf("\n\t\t1:: Add record");
+        printf("\n\t\t2:: Search record");
+        printf("\n\t\t3:: Modify record");
+        printf("\n\t\t4:: Delete record");
+        printf("\n\t\t5:: Calculate Salary");
+        printf("\n\t\t6:: Exit");
+        printf("\n\n Enter choice  ");
+        fflush(stdin);
+        scanf("%d",&i);
+        switch (i)
+        {
+        case 1:
+            addrec(j);
+            start();
+        case 2:
+            searchrec(j);
+            start();
+        case 3:
+            modrec(j);
+            start();
+        case 4:
+            delrec(j);
+        case 5:
+            salary(mm);
+            start();
+        case 6:
+            ext();
+        default :
+        {
+            printf("\n\n\tInvalid entry!!");
+            printf("\n\nTo Account Type\n\n\t");
+            system("pause");
+            start();
+        }
+
+        }
+    }
+    default :
+    {
+        printf("\n\n\tInvalid entry!!");
+        printf("\n\nTo Account Type\n\n\t");
+        system("pause");
+        start();
+    }
+    }
+}

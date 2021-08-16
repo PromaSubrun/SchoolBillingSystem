@@ -1,0 +1,20 @@
+							APPENDIX: I
+
+
+Exit:
+
+void ext()
+{
+    int i;
+    system("color 0c");
+    printf("\n\n\t\t Thank you for using C Program School Billing System Project\n\n");
+    system("pause");
+    system("CLS");
+    printf("\n\n\t\t\t Exiting\n\n");
+    for(i=1; i<=80; i++)
+    {
+        Sleep(50);
+        printf("*");
+    }
+    exit(0);
+}
